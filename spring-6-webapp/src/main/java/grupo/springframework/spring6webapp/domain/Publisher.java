@@ -1,11 +1,14 @@
 package grupo.springframework.spring6webapp.domain;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Publisher {
@@ -18,6 +21,9 @@ public class Publisher {
 	private String city;
 	private String state;
 	private String zip;
+
+	@OneToMany(mappedBy = "publisher")
+	private Set<Book> books = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -87,6 +93,6 @@ public class Publisher {
 	@Override
 	public String toString() {
 		return "Publisher [id=" + id + ", publisherName=" + publisherName + ", address=" + address + ", city=" + city
-				+ ", state=" + state + ", zip=" + zip + "]";
+				+ ", state=" + state + ", zip=" + zip + ", books=" + books + "]";
 	}
 }
