@@ -8,19 +8,17 @@ import grupo.springframework.spring6webapp.services.BookService;
 
 @Controller
 public class BookController {
-	
-    private final BookService bookService;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
-    
-    @RequestMapping("/books")
-    public String getBooks(Model model) {
+	private final BookService bookService;
 
-        model.addAttribute("books", bookService.findAll());
+	public BookController(BookService bookService) {
+		this.bookService = bookService;
+	}
 
-        return "books";
-    }
+	@RequestMapping("/books")
+	public String getBooks(Model model) {
+		model.addAttribute("books", bookService.findAll());
+		return "books";
+	}
 
 }
