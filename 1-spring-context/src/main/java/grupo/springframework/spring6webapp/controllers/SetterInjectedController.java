@@ -7,14 +7,14 @@ import grupo.springframework.spring6webapp.services.GreetingService;
 
 @Controller
 public class SetterInjectedController {
-    private GreetingService greetingService;
+	private GreetingService greetingService;
 
-    @Autowired
-    public void setGreetingService(GreetingService greetingService) {
-        this.greetingService = greetingService;
-    }
+	@Autowired
+	public void setGreetingService(GreetingService greetingService) {
+		this.greetingService = greetingService;
+	}
 
-    public String sayHello(){
-        return greetingService.sayGreeting();
-    }
+	public String sayHello() {
+		return greetingService.sayGreeting();
+	}
 }
