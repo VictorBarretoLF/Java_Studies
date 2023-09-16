@@ -9,12 +9,11 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 class myi18NControllerTestEN {
 
-    @Autowired
-    Myi18NController myi18NController;
+	@Autowired
+	Myi18NController myi18NController;
 
-    @Test
-    void sayHello() {
-
-        System.out.println(myi18NController.sayHello());
-    }
+	@Test
+	void sayHello() {
+		System.out.println(myi18NController.sayHello());
+	}
 }
