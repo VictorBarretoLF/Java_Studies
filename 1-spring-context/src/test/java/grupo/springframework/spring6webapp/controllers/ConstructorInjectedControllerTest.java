@@ -1,19 +1,14 @@
 package grupo.springframework.spring6webapp.controllers;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import grupo.springframework.spring6webapp.services.GreetingServiceImpl;
-
 @SpringBootTest
-public class ConstructorInjectedControllerTest {
-    ConstructorInjectedController controller;
+class ConstructorInjectedControllerTest {
 
-    @BeforeEach
-    void setUp() {
-        controller = new ConstructorInjectedController(new GreetingServiceImpl());
-    }
+    @Autowired
+    ConstructorInjectedController controller;
 
     @Test
     void sayHello() {
