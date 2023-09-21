@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import guru.springframework.spring6restmvc.model.Customer;
+import guru.springframework.spring6restmvc.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 
 @RequestMapping("/api/v1/customer")

@@ -7,11 +7,15 @@ import guru.springframework.spring6restmvc.model.Beer;
 
 public interface BeerService {
 
-    List<Beer> listBeers();
+	List<Beer> listBeers();
 
-    Beer getBeerById(UUID id);
+	Beer getBeerById(UUID id);
 
-    Beer saveNewBeer(Beer beer);
+	Beer saveNewBeer(Beer beer);
+
+	void updateBeerById(UUID beerId, Beer beer);
+	
+	void deleteById(UUID beerId);
+	
+	void patchBeerById(UUID beerId, Beer beer);
 }
-
-
