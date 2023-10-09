@@ -32,7 +32,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import guru.springframework.spring6restmvc.model.Customer;
+import guru.springframework.spring6restmvc.model.CustomerDTO;
 import guru.springframework.spring6restmvc.service.CustomerService;
 import guru.springframework.spring6restmvc.service.CustomerServiceImpl;
 
@@ -59,7 +59,7 @@ class CustomerControllerTest {
     ArgumentCaptor<UUID> uuidArgumentCaptor;
 
     @Captor
-    ArgumentCaptor<Customer> customerArgumentCaptor;
+    ArgumentCaptor<CustomerDTO> customerArgumentCaptor;
 
     /**
      * Tests the functionality of patching a customer's details.
@@ -69,7 +69,7 @@ class CustomerControllerTest {
     @Test
     void testPatchCustomer() throws Exception {
         // Retrieve the first customer from the service.
-        Customer customer = customerServiceImpl.getAllCustomers().get(0);
+        CustomerDTO customer = customerServiceImpl.getAllCustomers().get(0);
 
         // Create a map with updated customer details.
         Map<String, Object> customerMap = new HashMap<>();
@@ -101,7 +101,7 @@ class CustomerControllerTest {
     @Test
     void testDeleteCustomer() throws Exception {
         // Retrieve the first customer from the service.
-        Customer customer = customerServiceImpl.getAllCustomers().get(0);
+        CustomerDTO customer = customerServiceImpl.getAllCustomers().get(0);
 
         // Use mockMvc to simulate a DELETE request for the customer.
         mockMvc.perform(delete(CustomerController.CUSTOMER_PATH_ID, customer.getId())
@@ -123,7 +123,7 @@ class CustomerControllerTest {
     @Test
     void testUpdateCustomer() throws Exception {
         // Retrieve the first customer from the service.
-        Customer customer = customerServiceImpl.getAllCustomers().get(0);
+        CustomerDTO customer = customerServiceImpl.getAllCustomers().get(0);
 
         // Use mockMvc to simulate a PUT request to update the customer's details.
         mockMvc.perform(put(CustomerController.CUSTOMER_PATH_ID, customer.getId())
@@ -133,7 +133,7 @@ class CustomerControllerTest {
                 .andExpect(status().isNoContent()); // Expecting no content response (204 status).
 
         // Verify that the updateCustomerById method in customerService was called.
-        verify(customerService).updateCustomerById(uuidArgumentCaptor.capture(), any(Customer.class));
+        verify(customerService).updateCustomerById(uuidArgumentCaptor.capture(), any(CustomerDTO.class));
 
         // Assert that the captured UUID matches the customer's ID.
         assertThat(customer.getId()).isEqualTo(uuidArgumentCaptor.getValue());
@@ -147,12 +147,12 @@ class CustomerControllerTest {
     @Test
     void testCreateCustomer() throws Exception {
         // Retrieve the first customer from the service and reset its ID and version.
-        Customer customer = customerServiceImpl.getAllCustomers().get(0);
+        CustomerDTO customer = customerServiceImpl.getAllCustomers().get(0);
         customer.setId(null);
         customer.setVersion(null);
 
         // Mock the saveNewCustomer method to return another customer.
-        given(customerService.saveNewCustomer(any(Customer.class)))
+        given(customerService.saveNewCustomer(any(CustomerDTO.class)))
                 .willReturn(customerServiceImpl.getAllCustomers().get(1));
 
         // Use mockMvc to simulate a POST request to create a new customer.
@@ -204,7 +204,7 @@ class CustomerControllerTest {
     @Test
     void getCustomerById() throws Exception {
         // Retrieve the first customer from the service.
-        Customer customer = customerServiceImpl.getAllCustomers().get(0);
+        CustomerDTO customer = customerServiceImpl.getAllCustomers().get(0);
 
         // Mock the getCustomerById method to return the retrieved customer.
         given(customerService.getCustomerById(customer.getId())).willReturn(Optional.of(customer));

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import guru.springframework.spring6restmvc.model.Customer;
+import guru.springframework.spring6restmvc.model.CustomerDTO;
 import guru.springframework.spring6restmvc.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 
@@ -31,7 +31,7 @@ public class CustomerController {
 
     @PatchMapping(CUSTOMER_PATH_ID)
     public ResponseEntity patchCustomerById(@PathVariable("customerId") UUID customerId,
-                                                @RequestBody Customer customer){
+                                                @RequestBody CustomerDTO customer){
 
         customerService.patchCustomerById(customerId, customer);
 
@@ -48,7 +48,7 @@ public class CustomerController {
 
     @PutMapping(CUSTOMER_PATH_ID)
     public ResponseEntity updateCustomerByID(@PathVariable("customerId") UUID customerId,
-                                             @RequestBody Customer customer){
+                                             @RequestBody CustomerDTO customer){
 
         customerService.updateCustomerById(customerId, customer);
 
@@ -56,8 +56,8 @@ public class CustomerController {
     }
 
     @PostMapping(CUSTOMER_PATH)
-    public ResponseEntity handlePost(@RequestBody Customer customer){
-        Customer savedCustomer = customerService.saveNewCustomer(customer);
+    public ResponseEntity handlePost(@RequestBody CustomerDTO customer){
+        CustomerDTO savedCustomer = customerService.saveNewCustomer(customer);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", CUSTOMER_PATH + "/" + savedCustomer.getId().toString());
@@ -66,12 +66,12 @@ public class CustomerController {
     }
 
     @GetMapping(CUSTOMER_PATH)
-    public List<Customer> listAllCustomers(){
+    public List<CustomerDTO> listAllCustomers(){
         return customerService.getAllCustomers();
     }
 
     @GetMapping(value = CUSTOMER_PATH_ID)
-    public Customer getCustomerById(@PathVariable("customerId") UUID id){
+    public CustomerDTO getCustomerById(@PathVariable("customerId") UUID id){
         return customerService.getCustomerById(id).orElseThrow(NotFoundException::new);
     }
 
