@@ -203,13 +203,10 @@ class CustomerControllerTest {
      */
     @Test
     void getCustomerById() throws Exception {
-        // Retrieve the first customer from the service.
         CustomerDTO customer = customerServiceImpl.getAllCustomers().get(0);
 
-        // Mock the getCustomerById method to return the retrieved customer.
         given(customerService.getCustomerById(customer.getId())).willReturn(Optional.of(customer));
 
-        // Use mockMvc to simulate a GET request to retrieve the customer by its ID.
         mockMvc.perform(get(CustomerController.CUSTOMER_PATH_ID, customer.getId())
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

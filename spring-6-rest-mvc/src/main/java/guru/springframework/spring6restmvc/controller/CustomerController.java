@@ -20,7 +20,6 @@ import guru.springframework.spring6restmvc.model.CustomerDTO;
 import guru.springframework.spring6restmvc.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 
-@RequestMapping("/api/v1/customer")
 @RequiredArgsConstructor
 @RestController
 public class CustomerController {
