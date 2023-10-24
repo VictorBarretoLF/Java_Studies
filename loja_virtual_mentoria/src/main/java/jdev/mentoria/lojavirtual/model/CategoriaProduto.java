@@ -42,7 +42,7 @@ public class CategoriaProduto implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nomeDesc);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class CategoriaProduto implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CategoriaProduto other = (CategoriaProduto) obj;
-		return Objects.equals(id, other.id) && Objects.equals(nomeDesc, other.nomeDesc);
+		return Objects.equals(id, other.id);
 	}
 
 }
