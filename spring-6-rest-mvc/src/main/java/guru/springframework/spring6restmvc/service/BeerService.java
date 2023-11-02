@@ -20,3 +20,4 @@ public interface BeerService {
 
     void patchBeerById(UUID beerId, BeerDTO beer);
 }
+
