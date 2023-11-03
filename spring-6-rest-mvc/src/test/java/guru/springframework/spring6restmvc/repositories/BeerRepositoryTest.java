@@ -9,7 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import guru.springframework.spring6restmvc.entities.Beer;
 
 @DataJpaTest
-public class BeerRepositoryTest {
+class BeerRepositoryTest {
 
     @Autowired
     BeerRepository beerRepository;

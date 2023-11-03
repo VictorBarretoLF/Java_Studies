@@ -20,3 +20,4 @@ public interface BeerService {
 
     Optional<BeerDTO> patchBeerById(UUID beerId, BeerDTO beer);
 }
+
