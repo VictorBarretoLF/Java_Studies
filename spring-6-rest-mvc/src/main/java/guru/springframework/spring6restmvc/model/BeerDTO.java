@@ -12,16 +12,23 @@ import lombok.Data;
 @Builder
 @Data
 public class BeerDTO {
-	private UUID id;
-	private Integer version;
-	
-	@NotBlank
-	@NotNull
-	private String beerName;
-	private BeerStyle beerStyle;
-	private String upc;
-	private Integer quantityOnHand;
-	private BigDecimal price;
-	private LocalDateTime createdDate;
-	private LocalDateTime updateDate;
+    private UUID id;
+    private Integer version;
+
+    @NotBlank
+    @NotNull
+    private String beerName;
+
+    @NotNull
+    private BeerStyle beerStyle;
+
+    @NotNull
+    @NotBlank
+    private String upc;
+    private Integer quantityOnHand;
+
+    @NotNull
+    private BigDecimal price;
+    private LocalDateTime createdDate;
+    private LocalDateTime updateDate;
 }

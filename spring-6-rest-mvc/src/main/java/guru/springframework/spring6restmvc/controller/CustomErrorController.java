@@ -23,6 +23,6 @@ public class CustomErrorController {
     				return errorMap;
     			}).collect(Collectors.toList());
     	
-        return ResponseEntity.badRequest().body(exception.getBindingResult().getFieldErrors());
+        return ResponseEntity.badRequest().body(errorList);
     }
 }
