@@ -17,6 +17,8 @@ class SdjpaIntroApplicationTests {
     @Test
     void testBookRepository() {
         long count = bookRepository.count();
+        
+        System.out.println("AQUIIIIII: " + count);
 
         assertThat(count).isGreaterThan(0);
     }
