@@ -14,7 +14,6 @@ import guru.springframework.sdjpaintro.repositories.BookRepository;
 
 @ActiveProfiles("local")
 @DataJpaTest
-@Rollback
 @ComponentScan(basePackages = {"guru.springframework.sdjpaintro.bootstrap"})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class MySQLIntegrationTest {

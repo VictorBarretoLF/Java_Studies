@@ -17,7 +17,7 @@ import guru.springframework.sdjpaintro.repositories.BookRepository;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DataJpaTest
-@ComponentScan(basePackages = { "guru.springframework.sdjpaintro.bootstrap" })
+@ComponentScan(basePackages = {"guru.springframework.sdjpaintro.bootstrap"})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class SpringBootJpaTestSlice {
 
