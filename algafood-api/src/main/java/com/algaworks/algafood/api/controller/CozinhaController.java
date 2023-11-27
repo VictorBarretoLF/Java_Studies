@@ -23,7 +23,7 @@ import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.service.CadastroCozinhaService;
 
 @RestController
-@RequestMapping("/cozinhas")
+@RequestMapping(value = "/cozinhas")
 public class CozinhaController {
 
 	@Autowired
@@ -82,5 +82,5 @@ public class CozinhaController {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
 	}
-
+	
 }
