@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: loje_virtual_mentoria
+      POSTGRES_DB: loja_virtual_mentoria
     ports:
       - '5433:5432'
     volumes:

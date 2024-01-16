@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @Table(name = "categoria_produto")
 @SequenceGenerator(name = "seq_categoria_produto", sequenceName = "seq_categoria_produto", allocationSize = 1, initialValue = 1)
 public class CategoriaProduto implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -42,7 +43,10 @@ public class CategoriaProduto implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 	@Override
@@ -54,7 +58,13 @@ public class CategoriaProduto implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CategoriaProduto other = (CategoriaProduto) obj;
-		return Objects.equals(id, other.id);
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }
+

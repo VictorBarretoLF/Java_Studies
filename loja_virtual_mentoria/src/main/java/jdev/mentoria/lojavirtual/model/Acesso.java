@@ -1,7 +1,5 @@
 package jdev.mentoria.lojavirtual.model;
 
-import java.util.Objects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +14,7 @@ import org.springframework.security.core.GrantedAuthority;
 @Table(name = "acesso")
 @SequenceGenerator(name = "seq_acesso", sequenceName = "seq_acesso", initialValue = 1, allocationSize = 1)
 public class Acesso implements GrantedAuthority {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -45,10 +44,18 @@ public class Acesso implements GrantedAuthority {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("Acesso %d - Desc - %s", this.id, this.descricao);
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 	@Override
@@ -60,7 +67,12 @@ public class Acesso implements GrantedAuthority {
 		if (getClass() != obj.getClass())
 			return false;
 		Acesso other = (Acesso) obj;
-		return Objects.equals(id, other.id);
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }
